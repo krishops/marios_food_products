@@ -10,4 +10,13 @@
   <p>There are no products yet.</p>
 <% end %>
 
+<% if @reviews.any? %>
+  <p>Products with most reviews:</p>
+  <% Product.most_reviews.each do |most_reviews| %>
+  <li><%= link_to most_reviews.name, product_path(most_reviews) %></li>
+  <% end %>
+  <% else %>
+    <p>There are no reviews for any products</p>
+  <% end %>
+
 <p><%= link_to "Create new product", new_product_path %></p>

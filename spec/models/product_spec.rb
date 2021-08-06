@@ -16,6 +16,11 @@ describe Product do
     product = Product.create({name:"Lasagna", cost: 9.99, country_of_origin: "italy"})
     expect(product.country_of_origin()).to(eq("Italy"))
   end
+
+  it("uppercases the name of a usa") do
+    product = Product.create({name:"PB & J", cost: 9.99, country_of_origin: "usa"})
+    expect(product.country_of_origin()).to(eq("USA"))
+  end
 end
 
   
