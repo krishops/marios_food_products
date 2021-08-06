@@ -1,5 +1,7 @@
 <h1>Mario's Foods</h1>
 
+<p><%= link_to "Add new product", new_product_path %></p>
+
 <% if @products.any? %>
 <p>All Products:</p>
   <ul>
@@ -37,4 +39,3 @@
   <p>There are no foods produced in the USA.</p>
 <% end %>
 
-<p><%= link_to "Create new product", new_product_path %></p>

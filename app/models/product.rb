@@ -9,7 +9,7 @@ class Product < ApplicationRecord
   # before_save(ADD DECIMALS TO COST)
 
   def self.usa
-    where(country_of_origin: "USA")
+    where(country_of_origin: "United States")
   end
 
   scope :three_most_recent, -> { order(created_at: :desc).limit(3)}
