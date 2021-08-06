@@ -1,0 +1,21 @@
+<h1><%= @product.name %></h1>
+
+<h4>Cost: $<%= @product.cost%></h4>
+<h4>Country: <%= @product.country_of_origin%></h4>
+
+<% if @product.reviews.any? %>
+  
+  <h4><u>Product Reviews</u></h4>
+
+  <% @product.reviews.each do |review| %>
+    <ul>
+      <li>
+        <%= link_to review.author, product_review_path(@product, review) %>
+      </li>
+    </ul>
+  <% end %>
+<% else %>
+  <p>No reviews are listed for this product.</p>
+<% end %>
+
+<p><%= link_to "Return to products", products_path %></p>
