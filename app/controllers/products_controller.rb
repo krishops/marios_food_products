@@ -14,7 +14,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     if @product.save
       flash[:notice] = "Product Added"
-      redirect_to products_path
+      redirect_to product_path
     else
       render :new
     end
@@ -34,7 +34,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     if @product.update(product_params)
       flash[:notice] = "Product Updated"
-      redirect_to products_path
+      redirect_to product_path
     else
       render :edit
     end
@@ -43,7 +43,7 @@ class ProductsController < ApplicationController
   def destroy
     @product = Product.find(params[:id])
     @product.destroy
-    redirect_to products_path
+    redirect_to product_path
   end
 
   private
