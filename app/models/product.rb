@@ -6,6 +6,7 @@ class Product < ApplicationRecord
   validates :country_of_origin, presence: :true
 
   before_save(:titleize_product)
+  # before_save(ADD DECIMALS TO COST)
 
   private
     def titleize_product

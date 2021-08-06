@@ -11,7 +11,7 @@ class ReviewsController < ApplicationController
     @review = @product.reviews.new(review_params)
     if @review.save
       flash[:notice] = "Review Added"
-      redirect_to product_path(@product)
+      redirect_to products_path(@product)
     else
       render :new
     end
@@ -40,10 +40,13 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    @
-
+    @review = Review.find(params[:id])
+    @review.destroy
+    redirect_to products_path(@review.product)
+  end
 
   private
     def review_params
       params.require(:review).permit(:author, :content_body, :rating)
   end
+end
