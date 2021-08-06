@@ -1,48 +1,45 @@
+# Mario's Foods
+
+#### By Kristen Hopper
+
+## Technologies Used
+
+* _Ruby_
+* _Rails_
+* _HTML_
+* _ActiveRecord_
+* _Docker_
+
 ## Description
 
-This is a basic scaffolded Rails project using Docker with Ruby 2.6.5, Rails 5.2.4, and Postgres 12.1. This project can be used in lieu of installing Ruby, Rails and Postgres on your machine. When you run `docker-compose up`, Docker will create two containers on your machine: a Ruby/Rails environment running the local server and a Postgres container where your database is stored.
+This website lists products sold by Mario's Foods. Each product displays the price and country. Customers can also leave a review for the products.
 
-### Windows Users
+## Setup/Installation Requirements
 
-You will need to uncomment the following line in `Dockerfile` for the `entrypoint.sh` script to run correctly:
+To use this project, you will first need to install [Docker](https://docs.docker.com/get-docker/). Once it is installed, run `docker pull ruby:2.6.5` in the terminal to pull and install the correct image of Ruby on your machine.
 
-```
-RUN sed -i -e 's/\r$//' /usr/bin/entrypoint.sh
-```
+You can now clone the project by running `git clone https://github.com/krishops/marios_food_products` in the terminal.
 
-This line switches the line ending format so it works correctly with Windows. (Note that if the line above is uncommented, the script won't run correctly with Mac machines.)
+Within the root directory of the project, run `docker-compose up --build` in the terminal to build the project. This will also start a local server that can be accessed in the browser at localhost:3000. 
 
-### Running Rails and Postgres Servers
+## Project Testing
 
-* Run `docker-compose up` to run the local server at `localhost:3000`. However, if you go to `localhost:3000`, you will see the DB is not set up yet.
+Within the root directory, run the command `docker-compose run web bundle exec rspec` to run the rspec tests of the project.
+Testing should output:
+**14 examples, 0 failures**  
 
-### Running Shell Commands
+## Known Bugs
 
-To access a shell environment to run `rails c`, run migrations, or run other `rake` and `rails` tasks such as `rails routes`, you'll need to do the following.
+Flash notices do not display. 
 
-Run the following command in the root directory of the project:
+## License
 
-```
-$ docker-compose run web sh
-```
+[MIT](https://opensource.org/licenses/MIT)
 
-It's not necessary for the containers to be running (with `$ docker-compose up`).
+Copyright (c) Kristen Hopper
 
-This will open a shell where you can run any commands in the web application's environment. This includes the following commands:
+## Contact Information
 
-* `$ bundle exec rake db:create` (and any other Rake commands)
-* `$ rails routes` and `$ rails c` (as well as any other Rails commands)
-* `$ bundle exec rspec` (to run tests)
-* `$ irb` (if you just need a basic Ruby REPL)
+hopperdavis@gmail.com
 
-### What if I want to add more gems to my project?
 
-You'll need to complete the following steps:
-
-* First, add the gems to the project.
-
-* Run `docker-compose run web bundle install`. This will bundle the new gems.
-
-* Next, run `docker-compose up --build`. This will rebuild the project.
-
-To read Docker's documentation on running projects using Ruby and Rails, see [Quickstart: Compose and Rails](https://docs.docker.com/compose/rails/).
