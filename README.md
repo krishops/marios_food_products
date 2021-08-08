@@ -30,7 +30,7 @@ Testing should output:
 
 ## Known Bugs
 
-Flash notices do not display. 
+There are no known bugs for the application.
 
 ## License
 
