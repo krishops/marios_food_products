@@ -3,7 +3,6 @@ class ProductsController < ApplicationController
   def index
     @products = Product.all
     @reviews = Review.all
-    @current_user = User.authenticate(params[:email], params[:password])
     render :index
   end
 
