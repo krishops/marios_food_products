@@ -2,7 +2,10 @@
 
 <% if current_user && current_user.admin %>
 <p><%= link_to "Add new product", new_product_path %></p>
+<% else %>
+<h3>Check out these great products!</h3>
 <% end %>
+<% binding.pry %>
 
 <% if @products.any? %>
 <p>All Products:</p>
