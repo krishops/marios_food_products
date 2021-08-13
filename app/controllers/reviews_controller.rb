@@ -1,13 +1,13 @@
 class ReviewsController < ApplicationController
 
-  # def show
-  #   @product = Product.find(params[:product_id])
-  #   @review = Review.find(params[:id])
-  #   render :show
-  # end
-
   before_action :require_login
-  
+
+    def show
+    @product = Product.find(params[:product_id])
+    @review = Review.find(params[:id])
+    render :show
+  end
+
   def new
     @product = Product.find(params[:product_id])
     @review = @product.reviews.new
@@ -31,9 +31,7 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     render :edit
   end
-
   
-
   def update
     @review = Review.find(params[:id])
     if @review.update(review_params)

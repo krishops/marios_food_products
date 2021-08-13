@@ -5,34 +5,41 @@
 <% else %>
 <h3>Check out these great products!</h3>
 <% end %>
-<%# <% binding.pry %> %>
-
+<%# <% binding.pry %> 
+<div class="row">
 <% if @products.any? %>
+<div class="col-md-3">
 <p>All Products:</p>
   <ul>
     <% @products.each do |product| %>
       <li><%= link_to product.name, product_path(product) %></li>
     <% end %>
   </ul>
+  </div>
+  <div class="col-md-3">
   <p>Recently Added:<p>
   <ul>
   <% Product.three_most_recent.each do |most_recent| %>
   <li><%= link_to most_recent.name, product_path(most_recent) %></li>
   <% end %>
   </ul>
+  </div>
 <% else %>
   <p>There are no products yet.</p>
 <% end %>
 
 <% if @reviews.any? %>
+<div class="col-md-3">
   <p>Products with most reviews:</p>
   <% Product.most_reviews.each do |most_reviews| %>
   <li><%= link_to most_reviews.name, product_path(most_reviews) %></li>
   <% end %>
+  </div>
   <% else %>
     <p>There are no reviews for any products</p>
   <% end %>
 
+<div class="col-md-3">
   <% if Product.usa.any? %>
   <p>Buy Local:</p>
   <ul>
@@ -43,4 +50,6 @@
 <% else %>
   <p>There are no foods produced in the USA.</p>
 <% end %>
+</div>
+</div>
 
