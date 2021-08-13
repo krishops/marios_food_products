@@ -1,10 +1,10 @@
 class ReviewsController < ApplicationController
 
-  def show
-    @product = Product.find(params[:product_id])
-    @review = Review.find(params[:id])
-    render :show
-  end
+  # def show
+  #   @product = Product.find(params[:product_id])
+  #   @review = Review.find(params[:id])
+  #   render :show
+  # end
 
   before_action :require_login
   
@@ -58,7 +58,7 @@ class ReviewsController < ApplicationController
     def require_login
       unless logged_in?
         flash[:alert] = "You must be logged in to access this page"
-        redirect_to '/signup'
+        redirect_to '/signin'
       end
     end
 end

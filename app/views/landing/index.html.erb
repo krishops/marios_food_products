@@ -1,5 +1,5 @@
-Header
-Text about the company
+<h1>Mario's Foods</h1>
+<h2>World class, specialty foods directly to your door!</h2>
 
 <% if @products.any? %>
 <p>Recently Added:<p>
@@ -20,3 +20,5 @@ Text about the company
   <% else %>
     <p>There are no reviews for any products</p>
   <% end %>
+
+  <%= button_to "Enter Site", new_landing_path %>
