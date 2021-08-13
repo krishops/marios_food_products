@@ -14,4 +14,8 @@ class ApplicationController < ActionController::Base
       redirect_to '/'
     end
   end
+
+  def logged_in?
+    current_user != nil
+  end
 end

@@ -1,5 +1,13 @@
 class ReviewsController < ApplicationController
 
+  def show
+    @product = Product.find(params[:product_id])
+    @review = Review.find(params[:id])
+    render :show
+  end
+
+  before_action :require_login
+  
   def new
     @product = Product.find(params[:product_id])
     @review = @product.reviews.new
@@ -24,11 +32,7 @@ class ReviewsController < ApplicationController
     render :edit
   end
 
-  def show
-    @product = Product.find(params[:product_id])
-    @review = Review.find(params[:id])
-    render :show
-  end
+  
 
   def update
     @review = Review.find(params[:id])
@@ -49,5 +53,12 @@ class ReviewsController < ApplicationController
   private
     def review_params
       params.require(:review).permit(:author, :content_body, :rating)
-  end
+    end
+
+    def require_login
+      unless logged_in?
+        flash[:alert] = "You must be logged in to access this page"
+        redirect_to '/signup'
+      end
+    end
 end

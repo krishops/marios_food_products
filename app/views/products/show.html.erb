@@ -11,6 +11,8 @@
     <ul>
       <li>
         <%= link_to review.author, product_review_path(@product, review) %>
+        <p>Rating: <%= review.rating%></p>
+        <p>Review: <%= review.content_body %></p>
       </li>
     </ul>
   <% end %>
