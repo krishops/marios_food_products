@@ -1,6 +1,8 @@
 <h1>Mario's Foods</h1>
 
+<% if current_user && current_user.admin %>
 <p><%= link_to "Add new product", new_product_path %></p>
+<% end %>
 
 <% if @products.any? %>
 <p>All Products:</p>
