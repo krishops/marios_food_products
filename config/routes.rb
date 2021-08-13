@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   root to: 'landing#index'
-  resources :landing
-  
+  resources :landing do
+    resources :products
+  end
   resources :products do
     resources :reviews
   end
