@@ -1,6 +1,6 @@
 <h1>Mario's Foods</h1>
 
-<% if current_user && current_user.admin %>
+<% if current_user && current_user.admin == true %>
 <p><%= link_to "Add new product", new_product_path %></p>
 <% else %>
 <h3>Check out these great products!</h3>
