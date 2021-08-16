@@ -2,6 +2,9 @@ require 'rails_helper'
 
 describe "the add a product process" do
 
+  before(:each) do
+    Product.destroy_all
+  end
 
   it "adds a new product" do
     visit products_path
