@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
-  resources :products do
-    resources :reviews
-  end
+  
 
   root to: 'landing#index'
   post '/products' => 'products#index'
 
-  
+  resources :products do
+    resources :reviews
+  end
   
   get '/signup' => 'users#new'
   post '/users' => 'users#create'

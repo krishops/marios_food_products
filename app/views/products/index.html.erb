@@ -1,11 +1,11 @@
 <h1>Mario's Foods</h1>
 
-<%# <% if current_user && current_user["admin"] %> %>
+<% if current_user && current_user["admin"] %>
 <p><%= link_to "Add new product", new_product_path %></p>
-<%# <% else %> %>
-<%# <h3>Check out these great products!</h3>
+<% else %>
+<% <h3>Check out these great products!</h3>
 <% end %> %>
-<%# <% binding.pry %>  
+<% <% binding.pry  
 <div class="row">
 <% if @products.any? %>
 <div class="col-md-3">
