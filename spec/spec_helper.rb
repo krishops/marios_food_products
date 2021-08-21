@@ -94,3 +94,7 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 end
+
+# admin = User.new(:email => "admin@test.com", :password => "password", :password_confirmation => "password", :admin => true)
+# Session.create
+
