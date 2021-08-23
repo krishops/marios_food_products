@@ -4,11 +4,10 @@ describe "the add a product process" do
 
   before(:each) do
     Product.destroy_all
-    @admin = User.create(:email => "admin@test.com", :password => "password", :password_confirmation => "password", :admin => true)
   end
 
   it "adds a new product" do
-    Session[:user_id] = @admin.id
+    login_as(user)
     visit products_path
     click_link 'Add new product'
     fill_in 'Name', :with => 'lasagna'
@@ -20,6 +19,7 @@ describe "the add a product process" do
   end
 
   it "gives an error when no name, cost, or country is entered" do
+    login_as(user)
     visit new_product_path
     click_on 'Create Product'
     expect(page).to have_content "Name can't be blank"

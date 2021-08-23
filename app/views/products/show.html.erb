@@ -4,18 +4,16 @@
 <h4>Country: <%= @product.country_of_origin%></h4>
 
 <% if @product.reviews.any? %>
-  
   <h4><u>Product Reviews</u></h4>
-
-  <% @product.reviews.each do |review| %>
-    <ul>
-      <li>
-        <%= link_to review.author, product_review_path(@product, review) %>
-        <p>Rating: <%= review.rating%></p>
-        <p>Review: <%= review.content_body %></p>
-      </li>
-    </ul>
-  <% end %>
+    <% @product.reviews.each do |review| %>
+      <ul>
+        <li>
+          <%= link_to review.author, product_review_path(@product, review) %>
+          <p>Rating: <%= review.rating%></p>
+          <p>Review: <%= review.content_body %></p>
+        </li>
+      </ul>
+    <% end %>
 <% else %>
   <p>No reviews are listed for this product.</p>
 <% end %>

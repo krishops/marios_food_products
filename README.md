@@ -50,13 +50,13 @@ UPDATE users SET admin = 't' WHERE id = [USER_ID];
 ## Project Testing
 
 Within the root directory, run the command `docker-compose run web bundle exec rspec` to run the rspec tests of the project.
-Testing should output: **22 examples, 2 failures**
+Testing should output: **22 examples, 8 failures**
 
-The delete pages integration specs use two different options for handling confirmation pop-ups, unfortunately neither 'accept' modals or 'window' handlers are supported by the Selenium driver. Other working testing methods are still being researched by project owner.
+Errors in testing due to incorrect authorization set-up.
 
 ## Known Bugs
 
-Bug in routing: When landing page successfully accesses products page, a user is unable to add a new product.
+None
 
 ## License
 

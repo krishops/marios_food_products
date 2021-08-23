@@ -1,31 +1,32 @@
 <div class="jumbotron">
-<h1>Mario's Foods</h1>
-<h2>World class, specialty foods directly to your door!</h2>
+  <h1>Mario's Foods</h1>
+  <h2>World class, specialty foods directly to your door!</h2>
+  <%= link_to "Enter Site", '/products' %>
 </div>
 <div class="row">
-<% if @products.any? %>
-<div class="col-md-6">
-<p>Recently Added:<p>
-  <ul>
-  <% Product.three_most_recent.each do |most_recent| %>
-  <li><%= link_to most_recent.name, product_path(most_recent) %></li>
+  <% if @products.any? %>
+    <div class="col-md-6">
+      <p>Recently Added:<p>
+      <ul>
+        <% Product.three_most_recent.each do |most_recent| %>
+          <li><%= link_to most_recent.name, product_path(most_recent) %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% else %>
+    <p>There are no products yet.</p>
   <% end %>
-  </ul>
-  </div>
-<% else %>
-  <p>There are no products yet.</p>
-<% end %>
 
-<% if @reviews.any? %>
-<div class="col-md-6">
-  <p>Products with most reviews:</p>
-  <% Product.most_reviews.each do |most_reviews| %>
-  <li><%= link_to most_reviews.name, product_path(most_reviews) %></li>
-  <% end %>
-  </div>
+  <% if @reviews.any? %>
+    <div class="col-md-6">
+      <p>Products with most reviews:</p>
+        <% Product.most_reviews.each do |most_reviews| %>
+          <li><%= link_to most_reviews.name, product_path(most_reviews) %></li>
+        <% end %>
+    </div>
   <% else %>
     <p>There are no reviews for any products</p>
   <% end %>
-  </div>
+</div>
 
-  <%= link_to "Enter Site", '/products' %>
+  
