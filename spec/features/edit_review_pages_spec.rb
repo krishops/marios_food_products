@@ -7,6 +7,11 @@ describe "the edit a review process" do
     Review.destroy_all
     @product = Product.create({name:"Spaghetti", cost: 9.99, country_of_origin: "Italy"})
     @review = Review.create({author: "Jane Doe", content_body: "Lorem ipsum dolor sit amet, consectetuer adipiscin", rating: 4, product_id: @product.id})
+    user = User.create(:email => "user@test.com", :password => "password")
+    visit signin_path
+    fill_in 'Email', :with => user.email
+    fill_in 'Password', :with => user.password
+    click_on 'Log in'
   end
 
   it "edits a review" do

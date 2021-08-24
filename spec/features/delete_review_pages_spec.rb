@@ -7,6 +7,11 @@ describe "the delete a review process" do
     Review.destroy_all
     @product = Product.create({name:"Spaghetti", cost: 9.99, country_of_origin: "Italy"})
     @review = Review.create({author: "Jane Doe", content_body: "Lorem ipsum dolor sit amet, consectetuer adipiscin", rating: 4, product_id: @product.id})
+    admin = User.create(:email => "admin@test.com", :password => "password", admin: 'true')
+    visit signin_path
+    fill_in 'Email', :with => admin.email
+    fill_in 'Password', :with => admin.password
+    click_on 'Log in'
   end
 
   it "deletes review" do
