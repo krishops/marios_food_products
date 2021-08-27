@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
 
     before_action :require_login
+    before_action :current_admin, only: [:edit, :update, :destroy]
 
     def show
     @product = Product.find(params[:product_id])

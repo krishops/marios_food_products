@@ -50,9 +50,7 @@ UPDATE users SET admin = 't' WHERE id = [USER_ID];
 ## Project Testing
 
 Within the root directory, run the command `docker-compose run web bundle exec rspec` to run the rspec tests of the project.
-Testing should output: **22 examples, 8 failures**
-
-Errors in testing due to incorrect authorization set-up.
+Testing should output: **31 examples, 0 failures**
 
 ## Known Bugs
 

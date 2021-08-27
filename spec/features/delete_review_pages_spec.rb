@@ -7,23 +7,29 @@ describe "the delete a review process" do
     Review.destroy_all
     @product = Product.create({name:"Spaghetti", cost: 9.99, country_of_origin: "Italy"})
     @review = Review.create({author: "Jane Doe", content_body: "Lorem ipsum dolor sit amet, consectetuer adipiscin", rating: 4, product_id: @product.id})
-    admin = User.create(:email => "admin@test.com", :password => "password", admin: 'true')
-    visit signin_path
-    fill_in 'Email', :with => admin.email
-    fill_in 'Password', :with => admin.password
-    click_on 'Log in'
+    @user = User.create({:email => "fake@test.com", :password => "example", :password_confirmation => "example", :admin => true})
+    @user = User.create({:email => "fake@user.com", :password => "password", :password_confirmation => "password"})
   end
 
   it "deletes review" do
+    visit signin_path
+    fill_in 'email', :with => 'fake@test.com'
+    fill_in 'password', :with => 'example'
+    click_on 'commit'
     visit product_review_path(@product, @review)
-    delete_window = window_opened_by do
-      click_link 'Delete review'
-    end
-    within_window delete_window do
-      click_button 'OK'
-    end
+    click_link 'Delete review'
     expect(page).to have_no_content 'Jane Doe'
     expect(page).to have_no_content 'Lorem ipsum dolor sit amet, consectetuer adipiscin'
     expect(page).to have_no_content '4'
+  end
+
+  it "requires admin to delete a review" do
+    visit signin_path
+    fill_in 'email', :with => 'fake@user.com'
+    fill_in 'password', :with => 'password'
+    click_on 'commit'
+    visit product_review_path(@product, @review)
+    click_link 'Delete review'
+    expect(page). to have_content "You aren't authorized to visit this page"
   end
 end
